@@ -3,6 +3,7 @@
     "@rails/webpacker": "3.5",
     "babel-plugin-flow-react-proptypes": "^24.0.0",
     "babel-preset-react": "^6.24.1",
+    "classnames": "^2.2.5",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
