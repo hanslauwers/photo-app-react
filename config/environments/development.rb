@@ -1,4 +1,7 @@
 Rails.application.configure do
+  # Verifies that versions and hashed value of the package contents in the project's package.json
+config.webpacker.check_yarn_integrity = true
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -9,7 +12,7 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
   config.action_mailer.delivery_method = :test
-  config.action_mailer.default_url_options = { :host => 'https://hansrubyworkspace-hanslauwers.c9users.io' }
+  config.action_mailer.default_url_options = { :host => 'https://hans-rails-react-angular-hanslauwers.c9users.io' }
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false

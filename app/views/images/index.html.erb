@@ -11,6 +11,7 @@
     </tr>
   </thead>
   <tbody>
+    <tr><td><%= react_component('ImageDraggableList') %></td></tr>
     <% @images.each do |image| %>
       <tr>
         <td><%= link_to image.name, image_path(image) %></td>
