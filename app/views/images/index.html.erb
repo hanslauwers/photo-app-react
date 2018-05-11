@@ -9,15 +9,13 @@
       <div class="col-md-7"><%= model_class.human_attribute_name(:picture) %></div>
   </div>
     <% @images.each do |image| %>
-      <% @imageslist << {"name": image.name , "picture_url": image.picture.url, "image_path": image_path(image) } %>
+      <% @imageslist << {"name": image.name , "picture_url": image.picture.url, "image_path": image_path(image), "id": image.id, "order": image.order } %>
     <% end %>
   <div class="row">
-      <%= react_component('ImageDraggableList', {imageslist: @imageslist}) %>
+    <%= react_component('ImageDraggableList', {imageslist: @imageslist.sort_by{ |i| i[:order] }}) %>
   </div>
 </div>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_image_path,
             :class => 'btn btn-primary' %>
-            
-<%= debug @imageslist %>

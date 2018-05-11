@@ -1,5 +1,7 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
+  protect_from_forgery
+  respond_to :html, :json
 
   # GET /images
   # GET /images.json
@@ -62,6 +64,18 @@ class ImagesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def update_order
+    @new_images_list_json = params["_json"]
+    @new_images_list_json.each_with_index { |image_json, index|
+      if (image_json && index)
+        @image_id = image_json["id"]
+        @image = Image.find(@image_id)
+        @image[:order] = index;
+        @image.save
+      end
+    }
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -71,6 +85,6 @@ class ImagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
-      params.require(:image).permit(:name, :picture, :user_id)
+      params.require(:image).permit(:name, :picture, :user_id, :order)
     end
 end

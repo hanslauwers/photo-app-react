@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :images
   devise_for :users, :controllers => { :registrations => 'registrations' }
   root 'welcome#index'
+  
+  post 'images/update_order' => 'images#update_order'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

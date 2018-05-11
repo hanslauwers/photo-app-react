@@ -10,6 +10,7 @@ type ImageListItem = {
   name: string;
   picture_url: string;
   image_path: string;
+  id: number;
 };
 
 type ImageProps = {
@@ -51,11 +52,11 @@ class ImageItem extends React.Component<ImageProps, ImageState> {
           boxShadow: `rgba(0, 0, 0, 0.3) 0px ${shadow}px ${2 * shadow}px 0px`
         }}
       >
-        {dragHandle(<div className="dragHandle col-md-1" />)}
+        {dragHandle(<div className="dragHandle col-md-1"><i className="fa fa-anchor anchor-symbol"></i></div>)}
         <div className="col-md-4 image-item-name">
          <h2><a href={ item.image_path }>{ item.name }</a></h2>
         </div>
-        <div className="col-md-7">
+        <div className="col-md-7 image-item-picture">
           <img src={ item.picture_url } style={{ width:'100px'}, {height:'100px'}}></img>
         </div>
       </div>
@@ -79,6 +80,22 @@ export default class ImageDraggableList extends React.Component<ImageDraggableLi
     list: this.props.imageslist
   };
   
+  componentDidUpdate () {
+    this.updateImagesOrder(this.state.list);
+  }
+  
+  updateImagesOrder (newList: Array<*>)
+  {
+      var newestList = JSON.stringify(newList);
+      fetch('/images/update_order', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        body: newestList
+      });
+  }
   
   render () {
     return (
