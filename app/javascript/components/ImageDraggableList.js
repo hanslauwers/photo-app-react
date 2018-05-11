@@ -75,29 +75,10 @@ export default class ImageDraggableList extends React.Component<ImageDraggableLi
   
   
   state = {
-    list: this.props.imageslist /*[
-      { name: 'Flower', picture_url: 'https://hans-rails-react-angular-hanslauwers.c9users.io/uploads/image/picture/1/Chrysanthemum.jpg' },
-      { name: 'Desert', picture_url: 'https://hans-rails-react-angular-hanslauwers.c9users.io/uploads/image/picture/2/Desert.jpg' }
-    ]*/
+    list: this.props.imageslist
   };
   
-  /*
-   _transformImagesToDraggableList = (imageslist) => {
-    let newArray = []
-
-    var index = 0;
-    imagelist.forEach( (name, picture_url) => {
-      let newImage = {
-        name: name,
-        picture_url: picture_url
-      }
-      newArray[index] = newImage
-      index = index + 1;
-    });
-    
-    return newArray;
-  };
-  */
+  
   render () {
     return (
       <React.Fragment>
