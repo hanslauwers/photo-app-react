@@ -9,6 +9,7 @@ import DraggableList from "react-draggable-list"
 type ImageListItem = {
   name: string;
   picture_url: string;
+  image_path: string;
 };
 
 type ImageProps = {
@@ -52,7 +53,7 @@ class ImageItem extends React.Component<ImageProps, ImageState> {
       >
         {dragHandle(<div className="dragHandle col-md-1" />)}
         <div className="col-md-4 image-item-name">
-         <h2>{ item.name }</h2>
+         <h2><a href={ item.image_path }>{ item.name }</a></h2>
         </div>
         <div className="col-md-7">
           <img src={ item.picture_url } style={{ width:'100px'}, {height:'100px'}}></img>
