@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
+  protect_from_forgery with: :exception, unless: -> { request.format.json? }
+  before_action :authenticate_user!, except: [:update_order]
   before_action :set_image, only: [:show, :edit, :update, :destroy]
-  protect_from_forgery
-  respond_to :html, :json
 
   # GET /images
   # GET /images.json

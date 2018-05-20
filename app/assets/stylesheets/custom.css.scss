@@ -101,18 +101,31 @@
   height: 100px;
 }
 .dragHandle{
-  height: 100px;
+  height: 50px;
+  width: 50px;
   background-color: #f2f2f2;
   cursor: move;
+  position: absolute;
+  top: 0px;
+  display: none;
 }
 
-.dragHandle, .image-item-name, .image-item-picture{
+.image-item-name, .image-item-picture{
   margin-bottom: 10px;
   margin-top: 10px;
 }
 
+.filler{
+  height: 220px;
+}
+.image-item-picture:hover{
+  .dragHandle{
+    display:block;
+  }
+}
+
 .anchor-symbol{
-  line-height: 100px;
+  line-height: 50px;
   font-size: 40px;
   width: 100%;
   text-align: center;

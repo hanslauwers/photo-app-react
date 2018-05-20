@@ -2,12 +2,10 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+<%= link_to "Add new image",
+            new_image_path,
+            :class => 'btn btn-primary' %>
 <div class="container imagecontainer">
-  <div class="row">
-      <div class="col-md-1">Drag 'n drop</div>
-      <div class="col-md-4"><%= model_class.human_attribute_name(:name) %></div>
-      <div class="col-md-7"><%= model_class.human_attribute_name(:picture) %></div>
-  </div>
     <% @images.each do |image| %>
       <% @imageslist << {"name": image.name , "picture_url": image.picture.url, "image_path": image_path(image), "id": image.id, "order": image.order } %>
     <% end %>
@@ -16,6 +14,4 @@
   </div>
 </div>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_image_path,
-            :class => 'btn btn-primary' %>
+
